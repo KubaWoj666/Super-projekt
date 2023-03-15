@@ -1,19 +1,21 @@
 version: "3.9"
+
 services:
   web:
     build: .
-    command: python /Projekt/manage.py runserver 0.0.0.0:8000
+    command: python /projekt/manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/Projekt
+      - .:/projekt
     ports:
       - 8000:8000
     depends_on:
-      - db 
+      - db
   db:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
+
 volumes:
   postgres_data:
